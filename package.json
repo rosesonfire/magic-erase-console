@@ -1,0 +1,38 @@
+{
+  "name": "magic-erase-console",
+  "version": "0.0.1",
+  "description": "A simple web console application for the magic-erase package",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "standard && webpack-dev-server --content-base ./app --config ./bin/webpack.config.js"
+  },
+  "bin": "./bin/magicEraseConsole.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rosesonfire/magic-erase-console.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rosesonfire/magic-erase-console/issues"
+  },
+  "keywords": [
+    "magic-wand",
+    "object-detection",
+    "close-up-image",
+    "close-focussed-image",
+    "blurred-background",
+    "image-processing",
+    "computer-vision",
+    "image-detection",
+    "object-isolation",
+    "web-console",
+    "image-editting"
+  ],
+  "author": "rosesonfire",
+  "license": "MIT",
+  "homepage": "https://github.com/rosesonfire/magic-erase-console",
+  "dependencies": {
+    "magic-erase": "0.0.1",
+    "webpack": "^3.8.1",
+    "webpack-dev-server": "^2.9.4"
+  }
+}
