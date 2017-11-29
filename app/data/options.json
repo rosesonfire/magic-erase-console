@@ -1,0 +1,8 @@
+[
+  { "id": "1", "src": "birb.jpg", "sensitivity": 77.9 },
+  { "id": "2", "src": "mic.jpg", "sensitivity": 14.9 },
+  { "id": "3", "src": "cherry.jpg", "sensitivity": 55 },
+  { "id": "4", "src": "sunflower.jpg", "sensitivity": 67.3 },
+  { "id": "5", "src": "baseball.jpg", "sensitivity": 12.2 },
+  { "id": "6", "src": "flower.jpg", "sensitivity": 0.1 }
+]
