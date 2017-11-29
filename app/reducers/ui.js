@@ -20,7 +20,25 @@ export default (state = {}, { type, payload }) => {
     case 'ERASE_FULFILLED':
       state = {
         ...state,
-        erasedImgSrc: payload
+        erasedImgSrc: payload,
+        hasPast: true,
+        hasFuture: false
+      }
+      break
+    case 'UNDO_FULFILLED':
+      state = {
+        ...state,
+        erasedImgSrc: payload.image,
+        hasPast: payload.hasPast,
+        hasFuture: true
+      }
+      break
+    case 'REDO_FULFILLED':
+      state = {
+        ...state,
+        erasedImgSrc: payload.image,
+        hasFuture: payload.hasFuture,
+        hasPast: true
       }
       break
   }

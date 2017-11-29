@@ -5,7 +5,7 @@ import SensitivityMeter from './sensitivityMeter'
 import Image from './image'
 import ErasedImage from './erasedImage'
 import TimeTraveler from './timeTraveler'
-import { selectOption, setSensitivity } from './../actions/ui'
+import { selectOption, setSensitivity, undo, redo } from './../actions/ui'
 import { erase } from './../actions/worker'
 
 @connect(store => ({
@@ -19,7 +19,9 @@ import { erase } from './../actions/worker'
 }), dispatch => ({
   selectOption: (option) => dispatch(selectOption(option)),
   setSensitivity: (sensitivity) => dispatch(setSensitivity(sensitivity)),
-  erase: (erasePoint) => dispatch(erase(erasePoint))
+  erase: (erasePoint) => dispatch(erase(erasePoint)),
+  undo: () => dispatch(undo),
+  redo: () => dispatch(redo)
 }))
 export default class App extends Component {
   render () {
@@ -29,7 +31,7 @@ export default class App extends Component {
         <SensitivityMeter value={this.props.sensitivity} hide={this.props.hide} setSensitivity={this.props.setSensitivity} />
         <Image src={this.props.imgSrc} hide={this.props.hide} />
         <ErasedImage src={this.props.erasedImgSrc} hide={this.props.hide} erase={this.props.erase} />
-        <TimeTraveler hasPast={this.props.hasPast} hasFuture={this.props.hasFuture} hide={this.props.hide} />
+        <TimeTraveler hasPast={this.props.hasPast} hasFuture={this.props.hasFuture} undo={this.props.undo} redo={this.props.redo} hide={this.props.hide} />
       </div>)
   }
 }

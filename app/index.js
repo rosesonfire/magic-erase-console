@@ -3,11 +3,10 @@ import ReactDOM from 'react-dom'
 import { createStore, applyMiddleware, combineReducers } from 'redux'
 import reduxPromise from 'redux-promise-middleware'
 import reduxLogger from 'redux-logger'
-import reduxThunk from 'redux-thunk'
 import { Provider } from 'react-redux'
 import ui from './reducers/ui'
-import selectOption from './middlewares/selectOption'
-import erase from './middlewares/erase'
+import optionSelection from './middlewares/optionSelection'
+import eraser from './middlewares/eraser'
 import { getAllOptions } from './services/ui'
 import App from './components/app'
 // ========== Initialize application ==========
@@ -15,9 +14,8 @@ import App from './components/app'
 const createReduxStore = () => {
   const reducers = combineReducers({ ui })
   const middlewares = applyMiddleware(
-    reduxThunk,
-    selectOption,
-    erase(),
+    optionSelection,
+    eraser(),
     reduxPromise(),
     reduxLogger)
   const store = createStore(reducers, {
