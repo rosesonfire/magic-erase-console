@@ -5,7 +5,7 @@ export default class Image extends Component {
     return this.props.hide ? null : (
       <fieldset className='float'>
         <legend>Image</legend>
-        <img src={this.props.src} />
+        <img className='fixed-img' src={this.props.src} />
       </fieldset>
     )
   }

@@ -9,7 +9,7 @@ export default class ErasedImage extends Component {
     return this.props.hide ? null : (
       <fieldset className='float'>
         <legend>Erased Image</legend>
-        <img src={this.props.src} onClick={this.onClick} />
+        <img className='fixed-img' src={this.props.src} onClick={this.onClick} />
       </fieldset>
     )
   }
