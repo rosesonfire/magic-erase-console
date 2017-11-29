@@ -1,17 +1,22 @@
 import { erase } from './../services/worker'
 
-export default store => next => action => {
-  switch (action.type) {
-    case 'ERASE':
-      const { erasedImgData } = store.getState().worker
-      const { sensitivity } = store.getState().ui
-      const payload = action.payload
-      action.payload = erase(erasedImgData, payload, sensitivity).then(response =>
-        ({
-          erasedImgSrc: `data:image/jpeg;base64,${response.base64Img}`,
-          erasedImgData: response.data
-        }))
-      break
+export default () => {
+  const state = {}
+  return store => next => action => {
+    const payload = action.payload
+    switch (action.type) {
+      case 'SELECT_OPTION':
+        state.prevErase = new Promise(resolve => resolve(payload.src))
+        break
+      case 'ERASE':
+        const { sensitivity } = store.getState().ui
+        const curErase = state.prevErase.then(erasedImgData =>
+          erase(erasedImgData, payload, sensitivity))
+        state.prevErase = curErase.then(({ data }) => data)
+        action.payload = curErase.then(({ base64Img }) =>
+          `data:image/jpeg;base64,${base64Img}`)
+        break
+    }
+    next(action)
   }
-  next(action)
 }

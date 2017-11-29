@@ -12,10 +12,10 @@ import { erase } from './../actions/worker'
   options: store.ui.options,
   imgSrc: store.ui.imgSrc,
   sensitivity: store.ui.sensitivity,
-  erasedImgSrc: store.worker.erasedImgSrc,
+  erasedImgSrc: store.ui.erasedImgSrc,
   hasPast: store.ui.hasPast,
   hasFuture: store.ui.hasFuture,
-  hideCriticals: store.ui.hideCriticals
+  hide: store.ui.hide
 }), dispatch => ({
   selectOption: (option) => dispatch(selectOption(option)),
   setSensitivity: (sensitivity) => dispatch(setSensitivity(sensitivity)),
@@ -26,10 +26,10 @@ export default class App extends Component {
     return (
       <div>
         <ImageSelector options={this.props.options} selectOption={this.props.selectOption} />
-        <SensitivityMeter value={this.props.sensitivity} hide={this.props.hideCriticals} setSensitivity={this.props.setSensitivity} />
-        <Image src={this.props.imgSrc} hide={this.props.hideCriticals} />
-        <ErasedImage src={this.props.erasedImgSrc} hide={this.props.hideCriticals} erase={this.props.erase} />
-        <TimeTraveler hasPast={this.props.hasPast} hasFuture={this.props.hasFuture} hide={this.props.hideCriticals} />
+        <SensitivityMeter value={this.props.sensitivity} hide={this.props.hide} setSensitivity={this.props.setSensitivity} />
+        <Image src={this.props.imgSrc} hide={this.props.hide} />
+        <ErasedImage src={this.props.erasedImgSrc} hide={this.props.hide} erase={this.props.erase} />
+        <TimeTraveler hasPast={this.props.hasPast} hasFuture={this.props.hasFuture} hide={this.props.hide} />
       </div>)
   }
 }

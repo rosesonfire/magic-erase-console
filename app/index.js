@@ -1,32 +1,32 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { createStore, applyMiddleware } from 'redux'
+import { createStore, applyMiddleware, combineReducers } from 'redux'
 import reduxPromise from 'redux-promise-middleware'
 import reduxLogger from 'redux-logger'
 import reduxThunk from 'redux-thunk'
 import { Provider } from 'react-redux'
+import ui from './reducers/ui'
 import selectOption from './middlewares/selectOption'
 import erase from './middlewares/erase'
 import { getAllOptions } from './services/ui'
 import App from './components/app'
-import reducers from './reducers'
-
 // ========== Initialize application ==========
 
 const createReduxStore = () => {
+  const reducers = combineReducers({ ui })
   const middlewares = applyMiddleware(
     reduxThunk,
     selectOption,
-    erase,
-    reduxLogger,
-    reduxPromise())
+    erase(),
+    reduxPromise(),
+    reduxLogger)
   const store = createStore(reducers, {
     ui: {
       options: getAllOptions(),
-      hideCriticals: true
-    },
-    worker: {}
+      hide: true
+    }
   }, middlewares)
+
   return store
 }
 
