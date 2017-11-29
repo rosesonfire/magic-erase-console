@@ -1,5 +1,11 @@
 export default (state = {}, { type, payload }) => {
   switch (type) {
+    case 'CLEAR':
+      state = {
+        ...state,
+        hide: true
+      }
+      break
     case 'SELECT_OPTION':
       state = {
         ...state,
