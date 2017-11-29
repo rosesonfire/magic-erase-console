@@ -1,10 +1,7 @@
 export default (state = {}, { type, payload }) => {
   switch (type) {
     case 'CLEAR':
-      state = {
-        ...state,
-        hide: true
-      }
+      state = { ...state, hide: true }
       break
     case 'SELECT_OPTION':
       state = {
@@ -18,10 +15,7 @@ export default (state = {}, { type, payload }) => {
       }
       break
     case 'SET_SENSITIVITY':
-      state = {
-        ...state,
-        sensitivity: payload
-      }
+      state = { ...state, sensitivity: payload }
       break
     case 'ERASE_FULFILLED':
       state = {
@@ -48,6 +42,5 @@ export default (state = {}, { type, payload }) => {
       }
       break
   }
-
   return state
 }

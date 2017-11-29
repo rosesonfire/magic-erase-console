@@ -12,10 +12,7 @@ const doErase = (state) => async (erasePoint, sensitivity) => {
   const image = `data:image/jpeg;base64,${response.base64Img}`
   state.current++
   state.chronology.splice(state.current)
-  state.chronology.push({
-    image,
-    data: response.data
-  })
+  state.chronology.push({ image, data: response.data })
   return image
 }
 const doUndo = (state) => async () => {
@@ -34,11 +31,8 @@ const doRedo = (state) => async () => {
     hasFuture: state.current < state.chronology.length - 1
   }
 }
-
 export default () => {
-  const state = {
-    lastOperation: new Promise(resolve => resolve())
-  }
+  const state = { lastOperation: new Promise(resolve => resolve()) }
   const doSelectPart = doSelect(state)
   const doErasePart = doErase(state)
   const doUndoPart = doUndo(state)

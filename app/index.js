@@ -9,32 +9,19 @@ import optionSelection from './middlewares/optionSelection'
 import eraser from './middlewares/eraser'
 import { getAllOptions } from './services/ui'
 import App from './components/app'
-// ========== Initialize application ==========
 
 const createReduxStore = () => {
   const reducers = combineReducers({ ui })
-  const middlewares = applyMiddleware(
-    optionSelection,
-    eraser(),
-    reduxPromise(),
+  const middlewares = applyMiddleware(optionSelection, eraser(), reduxPromise(),
     reduxLogger)
-  const store = createStore(reducers, {
-    ui: {
-      options: getAllOptions(),
-      hide: true
-    }
-  }, middlewares)
-
+  const store = createStore(reducers,
+    { ui: { options: getAllOptions(), hide: true } }, middlewares)
   return store
 }
-
 const start = async () => {
   const store = createReduxStore()
   const mainContainerElement = document.getElementById('main-container')
-
-  ReactDOM.render(<Provider store={store}><App /></Provider>, mainContainerElement)
+  ReactDOM.render(<Provider store={store}><App /></Provider>,
+    mainContainerElement)
 }
-
-start().catch(err => {
-  console.error(err.message)
-})
+start().catch(err => console.error(err.message))

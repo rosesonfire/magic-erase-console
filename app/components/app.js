@@ -24,14 +24,17 @@ import { erase } from './../actions/worker'
   redo: () => dispatch(redo)
 }))
 export default class App extends Component {
-  render () {
-    return (
-      <div>
-        <ImageSelector options={this.props.options} selectOption={this.props.selectOption} />
-        <SensitivityMeter value={this.props.sensitivity} hide={this.props.hide} setSensitivity={this.props.setSensitivity} />
-        <Image src={this.props.imgSrc} hide={this.props.hide} />
-        <ErasedImage src={this.props.erasedImgSrc} hide={this.props.hide} erase={this.props.erase} />
-        <TimeTraveler hasPast={this.props.hasPast} hasFuture={this.props.hasFuture} undo={this.props.undo} redo={this.props.redo} hide={this.props.hide} />
-      </div>)
-  }
+  render = () =>
+    <div>
+      <ImageSelector options={this.props.options}
+        selectOption={this.props.selectOption} />
+      <SensitivityMeter value={this.props.sensitivity} hide={this.props.hide}
+        setSensitivity={this.props.setSensitivity} />
+      <Image src={this.props.imgSrc} hide={this.props.hide} />
+      <ErasedImage src={this.props.erasedImgSrc} hide={this.props.hide}
+        erase={this.props.erase} />
+      <TimeTraveler hasPast={this.props.hasPast}
+        hasFuture={this.props.hasFuture} undo={this.props.undo}
+        redo={this.props.redo} hide={this.props.hide} />
+    </div>
 }

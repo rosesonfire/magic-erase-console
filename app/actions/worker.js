@@ -1,4 +1,1 @@
-export const erase = (erasePoint) => ({
-  type: 'ERASE',
-  payload: erasePoint
-})
+export const erase = (erasePoint) => ({ type: 'ERASE', payload: erasePoint })
