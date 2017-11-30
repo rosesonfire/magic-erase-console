@@ -4,7 +4,15 @@
   "description": "A simple web console application for the magic-erase package",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "standard && webpack-dev-server --config ./bin/webpack.config.js --content-base ./img"
+    "clean": "rm -rf dist && mkdir dist",
+    "check-style": "standard app",
+    "build": "npm run check-style && babel --copy-files app -d dist",
+    "build-with-watch": "npm run check-style && babel --watch --copy-files app -d dist",
+    "clean-build": "npm run clean && npm run build",
+    "console": "webpack-dev-server --content-base ./img",
+    "watchers": "npm run build-with-watch & npm run console",
+    "start": "npm run clean-build && npm run watchers",
+    "prepack": "npm run clean-build"
   },
   "bin": "./bin/magicEraseConsole.js",
   "repository": {
@@ -31,29 +39,29 @@
   "license": "MIT",
   "homepage": "https://github.com/rosesonfire/magic-erase-console",
   "dependencies": {
-    "babel-core": "^6.26.0",
+    "html-webpack-plugin": "^2.30.1",
+    "magic-erase": "0.0.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-redux": "^5.0.6",
+    "redux": "^3.7.2",
+    "redux-logger": "^3.0.6",
+    "redux-promise-middleware": "^5.0.0",
+    "webpack": "^3.9.1",
+    "webpack-dev-server": "^2.9.5"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.0.2",
     "babel-loader": "^7.1.2",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
-    "html-webpack-plugin": "^2.30.1",
-    "magic-erase": "0.0.1",
-    "react": "^16.1.1",
-    "react-dom": "^16.1.1",
-    "react-redux": "^5.0.6",
-    "redux": "^3.7.2",
-    "redux-logger": "^3.0.6",
-    "redux-promise-middleware": "^5.0.0",
-    "webpack": "^3.8.1",
-    "webpack-dev-server": "^2.9.5"
+    "standard": "^10.0.3"
   },
   "standard": {
     "parser": "babel-eslint"
-  },
-  "devDependencies": {
-    "babel-eslint": "^8.0.2",
-    "standard": "^10.0.3"
   }
 }

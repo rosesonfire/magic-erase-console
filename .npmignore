@@ -1,5 +1,7 @@
 .vscode
 node_modules
 package-lock.json
-dist
 *.tgz
+app
+.babelrc
+tsconfig.json
