@@ -5,17 +5,14 @@ import reduxPromise from 'redux-promise-middleware'
 import reduxLogger from 'redux-logger'
 import { Provider } from 'react-redux'
 import ui from './reducers/ui'
-import optionSelection from './middlewares/optionSelection'
-import eraser from './middlewares/eraser'
-import { getAllOptions } from './services/ui'
+import synchronizer from './middlewares/synchronizer'
 import App from './components/app'
 
 const createReduxStore = () => {
   const reducers = combineReducers({ ui })
-  const middlewares = applyMiddleware(optionSelection, eraser(), reduxPromise(),
+  const middlewares = applyMiddleware(synchronizer(), reduxPromise(),
     reduxLogger)
-  const store = createStore(reducers,
-    { ui: { options: getAllOptions(), hide: true } }, middlewares)
+  const store = createStore(reducers, {}, middlewares)
   return store
 }
 const start = async () => {
