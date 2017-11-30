@@ -5,7 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rm -rf dist && mkdir dist",
-    "check-style": "standard app",
+    "check-style": "standard app/**/*.js",
     "build": "npm run check-style && babel --copy-files app -d dist",
     "build-with-watch": "npm run check-style && babel --watch --copy-files app -d dist",
     "clean-build": "npm run clean && npm run build",
