@@ -7,7 +7,7 @@ const hasFuture = (local) => local.current < local.chronology.length - 1
 const getOperations = (local, store) => ({
   doInitialize: async () => {
     await local.lastOperation
-    return options
+    return options.map(option => ({ ...option, id: option.id.toString() }))
   },
   doClear: async () => {
     await local.lastOperation
