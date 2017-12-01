@@ -1,4 +1,10 @@
-# magic-erase-console
+[![npm][npm-image]][npm-url]  [![javascript style guide][standard-image]][standard-url]
+
+[npm-image]: https://img.shields.io/npm/v/npm.svg
+[npm-url]: https://www.npmjs.com/package/magic-erase-console
+[standard-image]: https://img.shields.io/badge/code_style-standard-brightgreen.svg
+[standard-url]: https://standardjs.com
+
 A simple web console application to **demostrate** the [**magic-erase**](https://github.com/rosesonfire/magic-erase) package. Clear blurry background in close-focused images, by selecting click-points on the image. Works like the magic-wand tool in Photoshopp.
 # Installation
 `npm i magic-erase-console --save-dev`
