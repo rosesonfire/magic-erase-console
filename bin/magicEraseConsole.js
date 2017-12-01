@@ -8,9 +8,7 @@ exec('webpack-dev-server --content-base ' + path.join(__dirname, '..', 'img'),
   function (err, stdout, stderr) {
     if (err) {
       console.log(err)
-      return
-    }
-    if (stderr) {
+    } else if (stderr) {
       console.log('stderr: ' + stderr)
     }
   })
